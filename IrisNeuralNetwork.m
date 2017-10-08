@@ -33,6 +33,7 @@ testind = testind';
 X_train = trainind(:,1:4);
 Y_train = trainind(:,5);
 
+% need to change these so that the network can read it
 X_test = testind(:,1:4);
 Y_test = testind(:,5);
 
@@ -46,20 +47,23 @@ hiddenLayer1Size = 10;
 hiddenLayer2Size = 10;
 
 
-%% Randomly Initialize Weights
+%% Randomly Initialize Weights and Biases
 
 W12 = rand(inputLayerSize, hiddenLayer1Size);
 W23 = rand(hiddenLayer1Size, hiddenLayer2Size);
 W34 = rand(hiddenLayer2Size, outputLayerSize);
+% figure out biases
+
 
 %% Forward Propagation
 % (all matrix multiply)
+% need to put in biases
 
-z2 = X_train*W12';% activity going into the second layer
+z2 = X_train*W12;% activity going into the second layer
 a2 = sigmoid(z2);
-z3 = a2*W23';
+z3 = a2*W23;
 a3 = sigmoid(z3);
-z4 = a3*W34';
-Yout = sigmoid(z4)
+z4 = a3*W34;
+Yout = sigmoid(z4);
 
 
