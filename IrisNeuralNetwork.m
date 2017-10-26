@@ -50,20 +50,22 @@ hiddenLayer2Size = 10;
 %% Randomly Initialize Weights and Biases
 
 W12 = rand(inputLayerSize, hiddenLayer1Size);
+b12 = rand(1, hiddenLayer1Size);
 W23 = rand(hiddenLayer1Size, hiddenLayer2Size);
+b23 = rand(hiddenLayer1Size);
 W34 = rand(hiddenLayer2Size, outputLayerSize);
-% figure out biases
+b34 = rand(hiddenLayer2Size);
+
 
 
 %% Forward Propagation
 % (all matrix multiply)
-% need to put in biases
 
-z2 = X_train*W12;% activity going into the second layer
+z2 = (X_train*W12);% activity going into the second layer
 a2 = sigmoid(z2);
-z3 = a2*W23;
+z3 = (a2*W23) + b23;
 a3 = sigmoid(z3);
-z4 = a3*W34;
+z4 = (a3*W34) + b34;
 Yout = sigmoid(z4);
 
 
