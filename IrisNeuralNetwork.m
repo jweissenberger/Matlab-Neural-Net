@@ -52,9 +52,9 @@ hiddenLayer2Size = 10;
 W12 = rand(inputLayerSize, hiddenLayer1Size);
 b12 = rand(1, hiddenLayer1Size);
 W23 = rand(hiddenLayer1Size, hiddenLayer2Size);
-b23 = rand(hiddenLayer1Size);
+b23 = rand(1, hiddenLayer2Size);
 W34 = rand(hiddenLayer2Size, outputLayerSize);
-b34 = rand(hiddenLayer2Size);
+b34 = rand(1, outputLayerSize);
 
 
 
@@ -62,6 +62,8 @@ b34 = rand(hiddenLayer2Size);
 % (all matrix multiply)
 
 z2 = (X_train*W12);% activity going into the second layer
+[m,~] = size(z2);
+z2 = z2 + ones(m, 1) * b12; % adding the basis to all of the examples
 a2 = sigmoid(z2);
 z3 = (a2*W23) + b23;
 a3 = sigmoid(z3);
