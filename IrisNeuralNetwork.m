@@ -87,21 +87,7 @@ b34 = rand(1, outputLayerSize);
 
 
 %% Forward Propagation
-% (all matrix multiply)
 
-z2 = (X_train*W12);% activity going into the second layer
-[m,~] = size(z2);
-z2 = z2 + ones(m, 1) * b12; % adding the basis to all of the examples
-
-a2 = sigmoid(z2);
-z3 = (a2*W23);
-[m,~] = size(z3);
-z3 = z3 + ones(m, 1) * b23;
-
-a3 = sigmoid(z3);
-z4 = (a3*W34);
-[m,~] = size(z4);
-z4 = z4 + ones(m, 1) * b34;
-Yout = sigmoid(z4);
+Yout = ForwardProp( X_train, W12, b12, W23, b23, W34, b34 );
 
 
