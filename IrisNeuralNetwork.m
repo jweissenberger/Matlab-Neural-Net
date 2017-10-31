@@ -31,13 +31,41 @@ testind = testind';
 
 % seperate the inputs from the outputs for the test and train data
 X_train = trainind(:,1:4);
-Y_train = trainind(:,5);
+Y_trainVals = trainind(:,5);
+% creates Y_train such that ther is an output for each node
+Y_train = zeros(120, 3);
+for i = 1 : 120
+   if Y_trainVals(i) == 1
+       Y_train(i, 1) = 1;
+   end
+   
+   if Y_trainVals(i) == 2
+       Y_train(i, 2) = 1;
+   end
+   
+   if Y_trainVals(i) == 3
+       Y_train(i, 3) = 1;
+   end
+end
 
 % need to change these so that the network can read it
 X_test = testind(:,1:4);
-Y_test = testind(:,5);
-
-
+Y_testVals = testind(:,5);
+% creates Y_train such that ther is an output for each node
+Y_test = zeros(30, 3);
+for i = 1 : 30
+   if Y_testVals(i) == 1
+       Y_test(i, 1) = 1;
+   end
+   
+   if Y_testVals(i) == 2
+       Y_test(i, 2) = 1;
+   end
+   
+   if Y_testVals(i) == 3
+       Y_test(i, 3) = 1;
+   end
+end
 %% Define Hyperparameters
 % This will be a 4 layer neural network, with two hidden layers
 
@@ -64,10 +92,16 @@ b34 = rand(1, outputLayerSize);
 z2 = (X_train*W12);% activity going into the second layer
 [m,~] = size(z2);
 z2 = z2 + ones(m, 1) * b12; % adding the basis to all of the examples
+
 a2 = sigmoid(z2);
-z3 = (a2*W23) + b23;
+z3 = (a2*W23);
+[m,~] = size(z3);
+z3 = z3 + ones(m, 1) * b23;
+
 a3 = sigmoid(z3);
-z4 = (a3*W34) + b34;
+z4 = (a3*W34);
+[m,~] = size(z4);
+z4 = z4 + ones(m, 1) * b34;
 Yout = sigmoid(z4);
 
 
