@@ -8,6 +8,7 @@
 %% Data Preperation
 load fisheriris.mat;
 
+
 % 1 = setosa, 2 = versicolor, 3 = verginica
 % creates numeric lables for the network to predict
 
@@ -93,11 +94,17 @@ b34 = rand(1, outputLayerSize);
 
 %% Back Propagation
 
+Yout = Yout';
+Y_train = Y_train';
+z4 = z4';
+z3 = z3';
+z2 = z2';
+
 % error in the output layer
 delOut = Yout - Y_train;
 
 % error in the third layer (second hidden layer)
-del3 = ((W34)'*delOut).*sigmoidGradient(z4);
+del3 = ((W34)'*delOut)%.*sigmoidGradient(z4);
 
 % error in the second layer (first hidden layer)
 del2 = ((W23)'*del3).*sigmoidGradient(z3);
