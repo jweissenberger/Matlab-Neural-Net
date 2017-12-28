@@ -1,4 +1,4 @@
-function [ Yout, z4, z3, z2 ] = ForwardProp( X, W12, b12, W23, b23, W34, b34 )
+function [ Yout, a3, a2, z4, z3, z2 ] = ForwardProp( X, W12, b12, W23, b23, W34, b34 )
 %Forward Propagation algorithm 
 %   This computest the forward propagation for this particular neural net.
 %   Inputs: input vector X
