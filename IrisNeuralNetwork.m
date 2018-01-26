@@ -93,7 +93,7 @@ W34 = rand(outputLayerSize, hiddenLayer2Size);
 b34 = rand(outputLayerSize, 1);
 
 %% Number of iterations of training 
-for i = 1 : 500
+for i = 1 : 40
     
 %% Randomly Select Training Example
 % Because this neural network is trained using Stochastic gradient descent
@@ -115,7 +115,7 @@ Yone = Y_train(:,n);
 
 %% Update Weights and bias
 
-nu = 0.001; %learning rate
+nu = 0.1; %learning rate
 
 W34 = W34 - nu * (del4*a3');
 b34 = b34 - nu * del4;
