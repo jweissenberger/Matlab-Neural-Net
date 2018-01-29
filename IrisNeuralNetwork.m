@@ -93,13 +93,13 @@ W34 = rand(outputLayerSize, hiddenLayer2Size);
 b34 = rand(outputLayerSize, 1);
 
 %% Number of iterations of training 
-for i = 1 : 40
+for i = 1 : 10000
     
 %% Randomly Select Training Example
 % Because this neural network is trained using Stochastic gradient descent
 % the network is trained using only one example
 
-[~,s] = size(X_test);
+[~,s] = size(X_train);
 n = randi(s);
 Xone = X_train(:,n);
 Yone = Y_train(:,n);
@@ -108,14 +108,13 @@ Yone = Y_train(:,n);
 
 [Yout, a3, a2, z4, z3, z2] = ForwardProp( Xone, W12, b12, W23, b23, W34, b34 );
 
-
 %% Back Propagation
 
 [del4, del3, del2] = Backprop(Yout, Yone, z4, z3, z2, W34, W23);
 
 %% Update Weights and bias
 
-nu = 0.1; %learning rate
+nu = 0.2; %learning rate
 
 W34 = W34 - nu * (del4*a3');
 b34 = b34 - nu * del4;
@@ -126,5 +125,11 @@ b23 = b23 - nu * del3;
 W12 = W12 - nu * (del2*Xone');
 b12 = b12 - nu * del2;
 
+
+%% Check Accuracy
+if rem(i, 100) == 0
+[ Ycheck, a3, a2, z4, z3, z2 ] = ForwardProp( X_test, W12, b12, W23, b23, W34, b34 );
+AccuracyCheck(Ycheck, Y_test)
+end 
 end
 

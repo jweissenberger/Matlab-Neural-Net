@@ -7,7 +7,7 @@ function g = sigmoidGradient(z)
 
 g = zeros(size(z));
 
-g = (0.1*exp(-0.1*z))./(exp(-0.1*z)+1).^2;
+g = (0.05*exp(-0.05*z))./(exp(-0.05*z)+1).^2;
 
 
 
