@@ -79,8 +79,8 @@ Y_train = Y_train';
 
 inputLayerSize = 4; % representing the 4 features 
 outputLayerSize = 3; % representing the 3 kinds of iris
-hiddenLayer1Size = 6;
-hiddenLayer2Size = 5;
+hiddenLayer1Size = 10;
+hiddenLayer2Size = 10;
 
 
 %% Randomly Initialize Weights and Biases
@@ -114,7 +114,7 @@ Yone = Y_train(:,n);
 
 %% Update Weights and bias
 
-nu = 0.1; %learning rate
+nu = 0.01; %learning rate
 
 W34 = W34 - nu * (del4*a3');
 b34 = b34 - nu * del4;
@@ -130,6 +130,7 @@ b12 = b12 - nu * del2;
 if rem(i, 10) == 0
 [ Ycheck, a3, a2, z4, z3, z2 ] = ForwardProp( X_test, W12, b12, W23, b23, W34, b34 );
 AccuracyCheck(Ycheck, Y_test)
+Ycheck
 
 end 
 end
