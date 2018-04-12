@@ -7,10 +7,11 @@
 
 %% Data Preperation
 
+%load the data
 load fisheriris.mat;
 
+% create the output labels
 label = zeros(150,3);
-
 for i = 1 : 150
     if i <=50
         label(i,1) = 1;
@@ -21,9 +22,10 @@ for i = 1 : 150
     end
 end
 
+%concat the labels to the rest of the data
 iris = [meas label];
 
-
+%scale the data
 for g = 1 : 4,
     clear max
     max = max(iris(:, g));
@@ -34,8 +36,10 @@ for g = 1 : 4,
     end
 end
 
+%test train split
 [trainind, ~, testind] = dividerand(iris', .8, 0, .2);
 
+%break up the important information from the test traint split
 X_test = testind(1:4, :);
 Y_test = testind(5:7, :);
 X_train = trainind(1:4, :);
