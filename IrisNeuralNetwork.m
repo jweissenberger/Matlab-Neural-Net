@@ -85,7 +85,7 @@ hiddenLayer2Size = 10;
 
 %% Randomly Initialize Weights and Biases
 
-W12 = rand(hiddenLayer1Size, inputLayerSize);
+W12 = rand(hiddenLayer1Size, inputLayerSize); %try randn
 b12 = rand(hiddenLayer1Size, 1);
 W23 = rand(hiddenLayer2Size, hiddenLayer1Size);
 b23 = rand(hiddenLayer2Size, 1);
