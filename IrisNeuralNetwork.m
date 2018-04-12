@@ -79,8 +79,8 @@ Y_train = Y_train';
 
 inputLayerSize = 4; % representing the 4 features 
 outputLayerSize = 3; % representing the 3 kinds of iris
-hiddenLayer1Size = 10;
-hiddenLayer2Size = 10;
+hiddenLayer1Size = 6;
+hiddenLayer2Size = 5;
 
 
 %% Randomly Initialize Weights and Biases
@@ -93,7 +93,7 @@ W34 = rand(outputLayerSize, hiddenLayer2Size);
 b34 = rand(outputLayerSize, 1);
 
 %% Number of iterations of training 
-for i = 1 : 10000
+for i = 1 : 100
     
 %% Randomly Select Training Example
 % Because this neural network is trained using Stochastic gradient descent
@@ -114,7 +114,7 @@ Yone = Y_train(:,n);
 
 %% Update Weights and bias
 
-nu = 0.2; %learning rate
+nu = 0.1; %learning rate
 
 W34 = W34 - nu * (del4*a3');
 b34 = b34 - nu * del4;
@@ -127,9 +127,10 @@ b12 = b12 - nu * del2;
 
 
 %% Check Accuracy
-if rem(i, 100) == 0
+if rem(i, 10) == 0
 [ Ycheck, a3, a2, z4, z3, z2 ] = ForwardProp( X_test, W12, b12, W23, b23, W34, b34 );
 AccuracyCheck(Ycheck, Y_test)
+
 end 
 end
 
