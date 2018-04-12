@@ -7,7 +7,7 @@ function [ Yout, a3, a2, z4, z3, z2 ] = ForwardProp( X, W12, b12, W23, b23, W34,
 
 
 %% Input layer to First Hidden Layer
-z2 = (W12*X);% activity going into the second layer
+z2 = (W12*X);%activity going into the second layer
 [m,~] = size(z2);
 z2 = z2 + ones(1,m) * b12; % adding the basis to all of the examples
 
