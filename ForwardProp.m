@@ -5,6 +5,8 @@ function [ Yout, a3, a2, z4, z3, z2 ] = ForwardProp( X, W12, b12, W23, b23, W34,
 %           Weights: W12, W23, W34
 %   Output: prediction vector Yout
 
+% ***Last layer activation function needs to be softmax, not sigmoid, also need to change this in back prop ***
+
 
 %% Input layer to First Hidden Layer
 z2 = (W12*X);%activity going into the second layer
